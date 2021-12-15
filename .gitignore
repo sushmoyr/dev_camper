@@ -1,0 +1,4 @@
+node_module/
+.env
+# Project exclude paths
+/node_modules/

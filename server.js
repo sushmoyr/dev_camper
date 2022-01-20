@@ -25,10 +25,15 @@ const connect = async () => {
 
 }
 
-app.listen(
+const server = app.listen(
     PORT,
     async () => {
         console.log(`Server is running at ${PORT}`);
         await connect();
     }
 )
+
+process.on('unhandledRejection', (err, promise) => {
+    console.error(err.message);
+    server.close(() => process.exit(1));
+})
